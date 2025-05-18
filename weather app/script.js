@@ -25,7 +25,7 @@ async function checkWeather(city){
         console.log("error");
         return;
     }
-    location_not_found.style.display = "none";
+       location_not_found.style.display = "none";
     weather_body.style.display = "flex";
 
     temprature.innerHTML=`${Math.round(weather_data.main.temp - 273.15)}°C`;
@@ -65,6 +65,22 @@ async function checkWeather(city){
 
 
 }
-searchBtn.addEventListener('click', ()=>{
-    checkWeather(inputBox.value);
-})
+searchBtn.addEventListener('click', () => {
+    const city = inputBox.value.trim();
+
+    if (city === "") {
+        weather_body.style.display = "none";
+        location_not_found.style.display = "none"; 
+        return;
+    }
+
+    checkWeather(city);
+});
+
+
+
+
+
+// searchBtn.addEventListener('click', ()=>{
+//     checkWeather(inputBox.value);
+// })
